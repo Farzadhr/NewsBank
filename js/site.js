@@ -31,11 +31,11 @@ var normalNews = JSON.parse(normjson);
 for (var i of normalNews) {
   var address = i["Address"]
   var data = `
-  <a href="ShowNews.html?img=${address}" class="w-full flex justify-center">
-  <div class="w-9/12 rounded-sm">
+  <div class="w-full flex justify-center relative z-50">
+  <a href="ShowNews.html?img=${address}" class="w-9/12 rounded-sm">
       <img src="${address}" class="w-full" alt="">
-  </div>
-</a>
+  </a>
+</div>
   `
   document.getElementById("owlNormalNews").innerHTML += data
 }
@@ -43,11 +43,11 @@ var sportNews = JSON.parse(sportjson)
 for (var i of sportNews) {
   var address = i["Address"]
   var data = `
-  <a href="ShowNews.html?img=${address}" class="w-full flex justify-center">
-  <div class="w-9/12 rounded-sm">
+  <div class="w-9/12 flex justify-center  relative z-50 mx-auto">
+  <a href="ShowNews.html?img=${address}" class="w-full rounded-sm">
       <img src="${address}" class="w-full" alt="">
-  </div>
-</a>
+  </a>
+</div>
   `
   document.getElementById("owlSportNews").innerHTML += data
 }
@@ -91,8 +91,9 @@ owlnormal.owlCarousel({
   items: 1,
   dots: false,
   center: true,
-  navContainerClass: "owl-nav flex justify-between absolute top-1/2 right-[3%] w-[94%]",
-  navText: ['<p class="bg-primary text-white h-8 w-8 rounded-full flex items-center justify-center"><span class="mingcute--right-line h-6 w-6"></span></p>', '<p class="bg-primary text-white h-8 w-8 rounded-full flex items-center justify-center"><span class="mingcute--left-line h-6 w-6"></span></p>']
+  // stageOuterClass:"owl-stage-outer relative z-50",
+  // navContainerClass: "owl-nav flex justify-between absolute top-1/2 right-[3%] w-[94%] z-10",
+  navText: ['<p class="bg-primary text-white h-8 w-8 rounded-full flex items-center justify-center absolute top-1/2"><span class="mingcute--right-line h-6 w-6"></span></p>', '<p class="bg-primary text-white h-8 w-8 rounded-full flex items-center justify-center absolute top-1/2 left-[20px]"><span class="mingcute--left-line h-6 w-6"></span></p>']
 })
 owlnormal.trigger('play.owl.autoplay', [7000])
 
@@ -109,8 +110,9 @@ owlsport.owlCarousel({
   items: 1,
   dots: false,
   center: true,
-  navContainerClass: "owl-nav flex justify-between absolute top-1/2 right-[3%] w-[94%]",
-  navText: ['<p class="bg-primary text-white h-8 w-8 rounded-full flex items-center justify-center"><span class="mingcute--right-line h-6 w-6"></span></p>', '<p class="bg-primary text-white h-8 w-8 rounded-full flex items-center justify-center"><span class="mingcute--left-line h-6 w-6"></span></p>']
+  // stageOuterClass:"owl-stage-outer relative z-50",
+  // navContainerClass: "owl-nav flex justify-between absolute top-1/2 right-[3%] w-[94%] z-10",
+  navText: ['<p class="bg-primary text-white h-8 w-8 rounded-full flex items-center justify-center absolute top-1/2"><span class="mingcute--right-line h-6 w-6"></span></p>', '<p class="bg-primary text-white h-8 w-8 rounded-full flex items-center justify-center absolute top-1/2 left-[20px]"><span class="mingcute--left-line h-6 w-6"></span></p>']
 })
 owlsport.trigger('play.owl.autoplay', [7000])
 
