@@ -59,3 +59,9 @@ owlsport.owlCarousel({
     navText: ['<p class="bg-primary text-white h-8 w-8 rounded-full flex items-center justify-center"><span class="mingcute--right-line h-6 w-6"></span></p>', '<p class="bg-primary text-white h-8 w-8 rounded-full flex items-center justify-center"><span class="mingcute--left-line h-6 w-6"></span></p>']
 })
 owlsport.trigger('play.owl.autoplay',[7000])
+
+fetch("https://farzadhr.ir/NewsNormal.json")
+.then(res => res.json())
+.then(out =>
+  console.log('Checkout this JSON! ', out))
+.catch(err => { throw err });
