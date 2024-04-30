@@ -2,12 +2,15 @@
 $("#6b253632").html(moment().format('iYYYY/iMM/iDD'));
 $("#71e7b4c8").html(moment().format('iddd - iDD iMMMM iYYYY'));
 // persian time
-var m = moment();
+var m = moment().add("1", "hours");
 m.locale('fa');
 $("#9ac1ccf7").html(m.format('YYYY/MM/DD'));
 $("#fe33eafd").html(m.format('ddd - DD MMMM YYYY'));
-output = m.format('ddd') + ' ' + m.format("DD MMMM YYYY");
-document.getElementById("TodayTime").innerHTML = output;
+var time = setInterval(() => {
+  var m = moment().add("1", "hours");
+  output = m.format("HH:mm:ss");
+  document.getElementById("TodayTime").innerHTML = output;
+}, 1000)
 // english time
 var men = moment().locale("en");
 $("#41fa8bce").html(men.format('YYYY/MM/DD'));
@@ -28,11 +31,11 @@ var normalNews = JSON.parse(normjson);
 for (var i of normalNews) {
   var address = i["Address"]
   var data = `
-  <div class="w-full flex justify-center">
+  <a href="ShowNews.html?img=${address}" class="w-full flex justify-center">
   <div class="w-9/12 rounded-sm">
       <img src="${address}" class="w-full" alt="">
   </div>
-</div>
+</a>
   `
   document.getElementById("owlNormalNews").innerHTML += data
 }
@@ -40,14 +43,32 @@ var sportNews = JSON.parse(sportjson)
 for (var i of sportNews) {
   var address = i["Address"]
   var data = `
-  <div class="w-full flex justify-center">
+  <a href="ShowNews.html?img=${address}" class="w-full flex justify-center">
   <div class="w-9/12 rounded-sm">
       <img src="${address}" class="w-full" alt="">
   </div>
-</div>
+</a>
   `
   document.getElementById("owlSportNews").innerHTML += data
 }
+
+var imgnormnews = document.querySelectorAll("#owlNormalNews img,#owlSportNews img")
+console.log(imgnormnews);
+setTimeout(() => {
+  for (var i = 0; i < imgnormnews.length; i++) {
+    $(imgnormnews[i]).css("height", imgnormnews[0].getBoundingClientRect().width - 70);
+  }
+  if (window.innerWidth > 600) {
+    for (var i = 0; i < imgnormnews.length; i++) {
+      $(imgnormnews[i]).css("height", imgnormnews[0].getBoundingClientRect().width - 100);
+    }
+  }
+  if (window.innerWidth > 1000) {
+    for (var i = 0; i < imgnormnews.length; i++) {
+      $(imgnormnews[i]).css("height", imgnormnews[0].getBoundingClientRect().width - 140);
+    }
+  }
+}, 1);
 
 
 
