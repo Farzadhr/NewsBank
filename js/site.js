@@ -54,21 +54,24 @@ for (var i of sportNews) {
 
 var imgnormnews = document.querySelectorAll("#owlNormalNews img,#owlSportNews img")
 console.log(imgnormnews);
-setTimeout(() => {
+if (window.innerWidth < 770) {
+  console.log((((window.innerWidth - 120) * 75) / 100));
   for (var i = 0; i < imgnormnews.length; i++) {
-    $(imgnormnews[i]).css("height", imgnormnews[0].getBoundingClientRect().width - 70);
+    $(imgnormnews[i]).css("height", (((window.innerWidth - 120) * 75) / 100) - 60);
   }
-  if (window.innerWidth > 600) {
-    for (var i = 0; i < imgnormnews.length; i++) {
-      $(imgnormnews[i]).css("height", imgnormnews[0].getBoundingClientRect().width - 100);
-    }
+}
+if (window.innerWidth < 1024 && window.innerWidth > 770) {
+  console.log(((((window.innerWidth - 108) / 2) - 40) * 75) / 100);
+  for (var i = 0; i < imgnormnews.length; i++) {
+    $(imgnormnews[i]).css("height", ((((window.innerWidth - 108) / 2) - 40) * 75) / 100 - 60);
   }
-  if (window.innerWidth > 1000) {
-    for (var i = 0; i < imgnormnews.length; i++) {
-      $(imgnormnews[i]).css("height", imgnormnews[0].getBoundingClientRect().width - 140);
-    }
+}
+if(window.innerWidth > 1024){
+  console.log(((((window.innerWidth - 108) / 2) - 40) * 75) / 100);
+  for (var i = 0; i < imgnormnews.length; i++) {
+    $(imgnormnews[i]).css("height", ((((window.innerWidth - 108) / 2) - 40) * 75) / 100 - 90);
   }
-}, 1);
+}
 
 
 
